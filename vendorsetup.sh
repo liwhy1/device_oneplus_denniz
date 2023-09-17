@@ -19,7 +19,7 @@ discardPatches
 if ! history | tail -n 1 | grep -q "denniz"; then return; fi
 
 # Give it officiality
-# export EVO_BUILD_TYPE=OFFICIAL
+ export EVO_BUILD_TYPE=UNOFFICIAL
 
 # Go to root of source
 cd "$ANDROID_BUILD_TOP"
