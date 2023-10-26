@@ -137,7 +137,7 @@
 
     <!-- Control whether the always on display mode is enabled by default. This value will be used
          during initialization when the setting is still null. -->
-    <bool name="config_dozeAlwaysOnEnabled">true</bool>
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
 
     <!-- If AOD can show an ambient version of the wallpaper -->
     <bool name="config_dozeSupportsAodWallpaper">true</bool>
@@ -248,7 +248,7 @@
 
     <!-- Minimum screen brightness setting allowed by power manager.
          The user is forbidden from setting the brightness below this level. -->
-    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.0</item>
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.2</item>
 
     <!-- Maximum screen brightness allowed by the power manager.
          The user is forbidden from setting the brightness above this level -->
@@ -259,7 +259,7 @@
     <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.4</item>
 
     <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
-    <bool name="config_allowAutoBrightnessWhileDozing">false</bool>
+    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
 
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
          May be less than the minimum allowed brightness setting

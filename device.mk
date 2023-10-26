@@ -40,7 +40,10 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 
 # OneplusParts
-$(call inherit-product, packages/apps/OneplusParts/parts.mk)
+$(call inherit-product, device/oneplus/denniz/parts/parts.mk)
+
+# BCR
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
 
 # OPlusExtras
 PRODUCT_PACKAGES += \
@@ -65,7 +68,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration.xml \
-    device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUTY_SYSTEM)/etc/sysbta_audio_policy_configuration_7_0.xml
+    device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration_7_0.xml
 
 # Carrier Config Overlays
 PRODUCT_PACKAGES += \
@@ -150,6 +153,10 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay \
     $(DEVICE_PATH)/overlay-evolution
 
+# RRO Overlays
+PRODUCT_PACKAGES += \
+    FrameworksResOverlay
+
 # MTK IMS Overlays
 PRODUCT_PACKAGES += \
     mtk-ims \
@@ -216,8 +223,9 @@ PRODUCT_PACKAGES += \
     TetheringConfigOverlay \
     WifiOverlay
 
+# AOD Custom implementation
+PRODUCT_PACKAGES += \
+    AODHelper
+
 # Manifest
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/manifest.xml
-
-# AOD Custom implements
-PRODUCT_PACKAGES += AODHelper

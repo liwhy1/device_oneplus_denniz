@@ -25,26 +25,17 @@ $(call inherit-product, device/oneplus/denniz/device.mk)
 $(call inherit-product, vendor/evolution/config/common_full_phone.mk)
 
 # Evolution X Stuff
+EVO_BUILD_TYPE := UNOFFICIAL
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_SUPPORTS_QUICK_TAP := true
 EXTRA_UDFPS_ANIMATIONS := true
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := evolution_denniz
-PRODUCT_DEVICE := denniz
 PRODUCT_BRAND := OnePlus
-PRODUCT_MODEL := DN2103
+PRODUCT_DEVICE := denniz
 PRODUCT_MANUFACTURER := OnePlus
+PRODUCT_NAME := evolution_denniz
+PRODUCT_MODEL := DN2103
 
-# Gapps
-TARGET_GAPPS_ARCH := arm64
-TARGET_BOOT_ANIMATION_RES := 1080
-TARGET_SUPPORTS_QUICK_TAP := true
-
+# GMS
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
-
-# Build info
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_DEVICE=OP515BL1 \
-    PRODUCT_NAME=DN2103 \
-    PRIVATE_BUILD_DESC="evolution_denniz-userdebug tiramisu TQ3C.230805.001.B2 1694804404 release-key"
-
-BUILD_FINGERPRINT := OnePlus/DN2103/OP515BL1:11/RP1A.200720.011/1627567766349:user/release-keys
