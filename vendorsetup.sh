@@ -15,9 +15,6 @@ for blob in $BLOB_ROOT/lib64/libmtk-ril.so; do
         $blob
 done
 
-# Give ROM Build Type
-export EVO_BUILD_TYPE=UNOFFICIAL
-
 # Discard patches
 source device/oneplus/denniz/patches/functions.sh
 discardPatches

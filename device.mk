@@ -40,7 +40,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 
 # OneplusParts
-$(call inherit-product, device/oneplus/denniz/OneplusParts/parts.mk)
+$(call inherit-product, device/oneplus/denniz/parts/parts.mk)
 
 # BCR
 $(call inherit-product-if-exists, vendor/bcr/bcr.mk)
@@ -222,6 +222,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay \
     WifiOverlay
+
+# AOD Custom implementation
+PRODUCT_PACKAGES += \
+    AODHelper
 
 # Manifest
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/manifest.xml

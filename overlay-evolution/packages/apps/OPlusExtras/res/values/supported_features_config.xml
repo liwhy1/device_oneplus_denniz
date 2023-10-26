@@ -8,13 +8,7 @@
     <!-- Whether device supports Alert Slider -->
     <bool name="config_deviceSupportsAlertSlider">true</bool>
 
-    <!-- Whether device supports USB2.0 Force Fastcharge -->
-    <bool name="config_deviceSupportsUSB2FC">true</bool>
-
     <!-- Whether device supports High Brightness Mode -->
     <bool name="config_deviceSupportsHBM">true</bool>
-    
-    <!-- Whether device supports Per-App Refresh Rate -->
-    <bool name="config_deviceSupportsPerAppRefreshRate">true</bool>
 
 </resources>
