@@ -63,6 +63,6 @@
     <integer name="config_udfpsDimmingDisableDelay">13</integer>
     
     <!-- Whether to find optimal display refresh rate when using udfps -->
-    <bool name="config_udfpsOptimalRefreshRate">true</bool>
+    <bool name="config_udfpsOptimalRefreshRate">false</bool>
     
 </resources>

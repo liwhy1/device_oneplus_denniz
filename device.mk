@@ -42,9 +42,6 @@ PRODUCT_BUILD_SUPER_PARTITION := false
 # OneplusParts
 $(call inherit-product, device/oneplus/denniz/parts/parts.mk)
 
-# BCR
-$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
-
 # OPlusExtras
 PRODUCT_PACKAGES += \
     OPlusExtras \

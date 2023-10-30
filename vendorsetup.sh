@@ -22,9 +22,6 @@ discardPatches
 # Guard
 if ! history | tail -n 1 | grep -q "denniz"; then return; fi
 
-# Go to root of source
-cd "$ANDROID_BUILD_TOP"
-
 # Apply patches
 applyPatches
 
