@@ -34,6 +34,7 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 $(call inherit-product, vendor/oneplus/denniz/denniz-vendor.mk)
 $(call inherit-product, vendor/oneplus/IMS-denniz/mtk-ims.mk)
 $(call inherit-product-if-exists, packages/apps/prebuilt-apps/prebuilt-apps.mk)
+$(call inherit-product, vendor/bcr/bcr.mk)
 
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -50,6 +51,10 @@ PRODUCT_PACKAGES += \
 # CameraGo
 PRODUCT_PACKAGES += \
     GCamGOPrebuilt-V4
+
+# Alert slider
+PRODUCT_PACKAGES += \
+    alert-slider_daemon
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
