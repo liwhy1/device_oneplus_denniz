@@ -225,9 +225,5 @@ PRODUCT_PACKAGES += \
     TetheringConfigOverlay \
     WifiOverlay
 
-# AOD Custom implementation
-PRODUCT_PACKAGES += \
-    AODHelper
-
 # Manifest
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/manifest.xml
