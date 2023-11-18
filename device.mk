@@ -52,10 +52,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     GCamGOPrebuilt-V4
 
-# Alert slider
-PRODUCT_PACKAGES += \
-    alert-slider_daemon
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
@@ -71,10 +67,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration.xml \
     device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration_7_0.xml
-
-# Carrier Config Overlays
-PRODUCT_PACKAGES += \
-    CarrierConfigOverlay
 
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \
@@ -151,18 +143,22 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-service-multihal.denniz
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(DEVICE_PATH)/overlay \
-    $(DEVICE_PATH)/overlay-evolution
-
-# RRO Overlays
 PRODUCT_PACKAGES += \
-    FrameworksResOverlay
-
-# MTK IMS Overlays
-PRODUCT_PACKAGES += \
+    CarrierConfigOverlay \
+    FrameworksResOverlay \
     mtk-ims \
-    mtk-ims-telephony
+    mtk-ims-telephony \
+    OPlusExtrasResOverlay \
+    SettingsOverlay \
+    SettingsProviderOverlay \
+    SystemUIResOverlay \
+    TelephonyProviderOverlay \
+    TetheringOverlay \
+    WifiOverlay
+
+# Vendor overlay
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/vendor_overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/)
 
 # MTK InCallService
 PRODUCT_PACKAGES += \
@@ -212,18 +208,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator-service.mediatek
 
-# Vendor overlay
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/vendor_overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/)
-
 # Udfps
 PRODUCT_PACKAGES += \
     UdfpsResources
-
-# Wi-Fi
-PRODUCT_PACKAGES += \
-    TetheringConfigOverlay \
-    WifiOverlay
 
 # Manifest
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/manifest.xml
