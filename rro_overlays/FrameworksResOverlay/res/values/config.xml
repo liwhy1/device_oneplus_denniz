@@ -38,15 +38,6 @@
     <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">true</bool>
-
-    <!-- Boolean indicating if current platform supports HFP inband ringing -->
-    <bool name="config_bluetooth_hfp_inband_ringing_support">true</bool>
-
-    <!-- Boolean indicating if current platform supports BLE peripheral mode -->
-    <bool name="config_bluetooth_le_peripheral_mode_supported">false</bool>
-
-    <!-- Whether device has screen with higher aspect ratio -->
-    <bool name="config_haveHigherAspectRatioScreen">true</bool>
 	 
     <!-- Flag specifying whether VoLTE is available on device -->
     <bool name="config_device_volte_available">true</bool>
@@ -134,13 +125,6 @@
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
     <bool name="config_showNavigationBar">true</bool>
-
-    <!-- Indicate whether to allow the device to suspend when the screen is off
-         due to the proximity sensor.  This resource should only be set to true
-         if the sensor HAL correctly handles the proximity sensor as a wake-up source.
-         Otherwise, the device may fail to wake out of suspend reliably.
-         The default is false. -->
-    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
@@ -232,7 +216,7 @@
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
          May be less than the minimum allowed brightness setting
          that can be set by the user. -->
-    <integer name="config_screenBrightnessDoze">5</integer>
+    <integer name="config_screenBrightnessDoze">3</integer>
 
     <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
          for debouncing the light sensor.  Different constants are used to debounce the light sensor
@@ -291,23 +275,23 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>0</item>
-        <item>15</item>
-        <item>30</item>
-        <item>45</item>
-        <item>60</item>
-        <item>75</item>
-        <item>90</item>
-        <item>105</item>
-        <item>120</item>
-        <item>135</item>
-        <item>150</item>
-        <item>165</item>
-        <item>180</item>
-        <item>195</item>
-        <item>210</item>
-        <item>225</item>
-        <item>240</item>
+        <item>8</item>
+        <item>64</item>
+        <item>98</item>
+        <item>104</item>
+        <item>110</item>
+        <item>116</item>
+        <item>122</item>
+        <item>128</item>
+        <item>134</item>
+        <item>182</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
+        <item>255</item>
         <item>255</item>
     </integer-array>
 
@@ -412,9 +396,6 @@
         <item>96</item>
      </integer-array>
 
-     <!-- How long it takes for the HW to start illuminating after the illumination is requested. -->
-    <integer name="config_udfps_illumination_transition_ms">0</integer>
-
     <!-- The default peak refresh rate for a given device. -->
     <integer name="config_defaultPeakRefreshRate">90</integer>
 
@@ -439,26 +420,11 @@
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
 
-    <!-- Whether to cleanup fingerprints upon connection to the daemon and when user switches -->
-    <bool name="config_cleanupUnusedFingerprints">false</bool>
-
     <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
     <bool name="config_zramWriteback">true</bool>
 
     <!-- If true, the display will be shifted around in ambient mode. -->
     <bool name="config_enableBurnInProtection">true</bool>
-
-    <!-- Whether to cancel fingerprint operation if not idle -->
-    <bool name="config_fpCancelIfNotIdle">true</bool>
-
-    <!-- Whether or not the device is capable of multiple levels of vibration intensity.
-         Note that this is different from whether it can control the vibration amplitude as some
-         devices will be able to vary their amplitude but do not possess enough dynamic range to
-         have distinct intensity levels -->
-    <bool name="config_vibration_supports_multiple_intensities">true</bool>
-
-    <!-- Whether Hearing Aid profile is supported -->
-    <bool name="config_hearing_aid_profile_supported">true</bool>
 
     <!-- The default journal mode to use use when Write-Ahead Logging is not active.
          Choices are: OFF, DELETE, TRUNCATE, PERSIST and MEMORY.
@@ -549,9 +515,112 @@
     <!-- True if Unprocessed audio source supports the required frequency range and level -->
     <bool name="config_supportAudioSourceUnprocessed">true</bool>
 
-    <!-- Determines whether the shell features all run on another thread. -->
-    <bool name="config_enableShellMainThread">true</bool>
-
     <!-- Whether the device enable the non-standalone (NSA) mode of 5G NR.-->
     <bool name="config_telephony5gNonStandalone">true</bool>
+
+    <!-- An array of floats describing the screen brightness in nits corresponding to the backlight
+         values in the config_screenBrightnessBacklight array.  On OLED displays these  values
+         should be measured with an all white image while the display is in the fully on state.
+         Note that this value should *not* reflect the maximum brightness value for any high
+         brightness modes but only the maximum brightness value obtainable in a sustainable manner.
+
+         This array should be equal in size to config_screenBrightnessBacklight -->    
+     <array name="config_screenBrightnessNits">
+        <item>2</item>
+        <item>600</item>
+    </array>
+
+    <!-- An array describing the screen's backlight values corresponding to the brightness
+         values in the config_screenBrightnessNits array.
+
+         This array should be equal in size to config_screenBrightnessBacklight. -->
+    <integer-array name="config_screenBrightnessBacklight">
+        <item>1</item>
+        <item>255</item>
+    </integer-array>
+    
+     <!-- Array of desired screen brightness in nits corresponding to the lux values
+         in the config_autoBrightnessLevels array. The display brightness is defined as the measured
+         brightness of an all-white image.
+
+         If this is defined then:
+            - config_autoBrightnessLcdBacklightValues should not be defined
+            - config_screenBrightnessNits must be defined
+            - config_screenBrightnessBacklight must be defined
+
+         This array should have size one greater than the size of the config_autoBrightnessLevels
+         array. The brightness values must be non-negative and non-decreasing. This must be
+         overridden in platform specific overlays -->
+    <array name="config_autoBrightnessDisplayValuesNits">
+        <item>3.1</item>
+        <item>3.5</item>
+        <item>3.8</item>
+        <item>16.4</item>
+        <item>26</item>
+        <item>34</item>
+        <item>37</item>
+        <item>49</item>
+        <item>62</item>
+        <item>79</item>
+        <item>86</item>
+        <item>88</item>
+        <item>88</item>
+        <item>88</item>
+        <item>89</item>
+        <item>89</item>
+        <item>89</item>
+        <item>91</item>
+        <item>91</item>
+        <item>93</item>
+        <item>93</item>
+        <item>93</item>
+        <item>93</item>
+        <item>94</item>
+        <item>94</item>
+        <item>95</item>
+        <item>99</item>
+        <item>100</item>
+        <item>101</item>
+        <item>103</item>
+        <item>105</item>
+        <item>108</item>
+        <item>109</item>
+        <item>111</item>
+        <item>113</item>
+        <item>113</item>
+        <item>117</item>
+        <item>119</item>
+        <item>120</item>
+        <item>123</item>
+        <item>124</item>
+        <item>126</item>
+        <item>127</item>
+        <item>130</item>
+        <item>132</item>
+        <item>154</item>
+        <item>172</item>
+        <item>192</item>
+        <item>220</item>
+        <item>251</item>
+        <item>292</item>
+        <item>320</item>
+        <item>337</item>
+        <item>411</item>
+        <item>439</item>
+        <item>453</item>
+        <item>466</item>
+        <item>480</item>
+        <item>500</item>
+        <item>508.3</item>
+        <item>516.6</item>
+        <item>525</item>
+        <item>532.3</item>
+        <item>540.6</item>
+        <item>550</item>
+        <item>562.5</item>
+        <item>575</item>
+        <item>587.5</item>
+        <item>600</item>
+    </array>
+
 </resources>

@@ -20,14 +20,14 @@
     
     <!-- Preferred max refresh rate at keyguard, if supported by the display. -->
     <integer name="config_keyguardMaxRefreshRate">60</integer>
-    
+  
     <!-- Doze: does the double tap sensor need a proximity check? -->
     <bool name="doze_double_tap_proximity_check">true</bool>
 
     <!-- Use framework FOD dimming instead of kernel dimming -->
     <bool name="config_udfpsFrameworkDimming">true</bool>
-
-    <!-- Array of brightness-alpha lut for framework dimming -->
+    
+        <!-- Array of brightness-alpha lut for framework dimming -->
     <string-array name="config_udfpsDimmingBrightnessAlphaArray" translatable="false">
         <item>0,255</item>
         <item>190,238</item>
@@ -44,13 +44,5 @@
         <item>950,160</item>
         <item>1024,152</item>
     </string-array>
-
-    <!-- The scale factor for framework dimming -->
-    <integer name="config_udfpsDimmingBrightnessMin">389</integer>
-    <integer name="config_udfpsDimmingBrightnessMax">1024</integer>
-
-    <!-- The amount of delay to add when disabling the dimming.
-         This is used to prevent flickers due to the dimming being disabled
-         before the screen has had chance to switch out of HBM mode -->
-    <integer name="config_udfpsDimmingDisableDelay">4</integer>
+    
 </resources>

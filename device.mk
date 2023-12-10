@@ -130,9 +130,12 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.denniz \
     android.hardware.sensors@2.0-service-multihal.denniz
 
+# Evolution Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(DEVICE_PATH)/overlay-evolution
+
 # Overlays
 PRODUCT_PACKAGES += \
-    OPlusExtrasResTarget \
     CarrierConfigOverlay \
     FrameworksResOverlay \
     mtk-ims \

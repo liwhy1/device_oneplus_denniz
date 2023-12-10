@@ -5,7 +5,6 @@
 //
 
 runtime_resource_overlay {
-    name: "SystemUIResOverlay",
-    theme: "SystemUIResOverlay",
+    name: "SettingsResOverlay",
     product_specific: true,
 }

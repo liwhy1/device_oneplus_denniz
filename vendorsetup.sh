@@ -1,9 +1,15 @@
 #!/bin/sh
 
-# Memory the current directory
+# Save current directory
 CUR_DIR=$(pwd)
 
 croot && export ANDROID_BUILD_TOP=$(pwd)
+
+# Guard
+if ! history | tail -n 1 | grep -q "denniz"; then return; fi
+
+# Go to root of source
+cd "$ANDROID_BUILD_TOP"
 
 # Hack MTK RIL libs for USSD and incoming calls
 # see https://github.com/phhusson/treble_experimentations/issues/57#issuecomment-416998086
@@ -15,15 +21,8 @@ for blob in $BLOB_ROOT/lib64/libmtk-ril.so; do
         $blob
 done
 
-# Discard patches
-source device/oneplus/denniz/patches/functions.sh
-discardPatches
-
-# Guard
-if ! history | tail -n 1 | grep -q "denniz"; then return; fi
-
-# Apply patches
-applyPatches
+# Apply denniz patches
+bash device/oneplus/denniz/patches/patch.sh
 
 # Return to saved directory
 cd $CUR_DIR ; unset CUR_DIR
