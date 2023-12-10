@@ -33,24 +33,19 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 # Call proprietary blob setup
 $(call inherit-product, vendor/oneplus/denniz/denniz-vendor.mk)
 $(call inherit-product, vendor/oneplus/IMS-denniz/mtk-ims.mk)
-$(call inherit-product-if-exists, packages/apps/prebuilt-apps/prebuilt-apps.mk)
 $(call inherit-product, vendor/bcr/bcr.mk)
 
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 
-# OneplusParts
-$(call inherit-product, device/oneplus/denniz/parts/parts.mk)
-
 # OPlusExtras
 PRODUCT_PACKAGES += \
     OPlusExtras \
     tri-state-key-calibrate
 
-# CameraGo
-PRODUCT_PACKAGES += \
-    GCamGOPrebuilt-V4
+# Viper4Android
+$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
@@ -122,13 +117,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nxp.conf
 
-# Pocket Mode
-PRODUCT_PACKAGES += \
-    PocketMode
-
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/permissions/privapp-permissions-pocketmode.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-pocketmode.xml
-
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
@@ -144,12 +132,12 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
+    OPlusExtrasResTarget \
     CarrierConfigOverlay \
     FrameworksResOverlay \
     mtk-ims \
     mtk-ims-telephony \
-    OPlusExtrasResOverlay \
-    SettingsOverlay \
+    SettingsResOverlay \
     SettingsProviderOverlay \
     SystemUIResOverlay \
     TelephonyProviderOverlay \
@@ -170,8 +158,8 @@ PRODUCT_COPY_FILES += \
 
 # Perf
 PRODUCT_COPY_FILES += \
-    system/core/libprocessgroup/profiles/task_profiles_30.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json \
-    system/core/libprocessgroup/profiles/cgroups_30.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json
+    system/core/libprocessgroup/profiles/task_profiles_30.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/etc/task_profiles.json \
+    system/core/libprocessgroup/profiles/cgroups_30.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/etc/cgroups.json
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -190,8 +178,7 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(DEVICE_PATH) \
-    hardware/mediatek
+    $(DEVICE_PATH)
 
 # System prop
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
@@ -204,13 +191,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.denniz
 
-# Vibrator
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.mediatek
-
 # Udfps
 PRODUCT_PACKAGES += \
     UdfpsResources
 
-# Manifest
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/manifest.xml
+# GCamGo
+PRODUCT_PACKAGES += \
+    GCamGOPrebuilt-V4
