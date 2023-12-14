@@ -21,6 +21,9 @@ for blob in $BLOB_ROOT/lib64/libmtk-ril.so; do
         $blob
 done
 
+# Apply denniz patches
+bash device/oneplus/denniz/patches/patch.sh
+
 # Return to saved directory
 cd $CUR_DIR ; unset CUR_DIR
 
