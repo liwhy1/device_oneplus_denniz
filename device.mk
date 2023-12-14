@@ -33,19 +33,18 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 # Call proprietary blob setup
 $(call inherit-product, vendor/oneplus/denniz/denniz-vendor.mk)
 $(call inherit-product, vendor/oneplus/IMS-denniz/mtk-ims.mk)
-$(call inherit-product, vendor/bcr/bcr.mk)
+$(call inherit-product-if-exists, packages/apps/prebuilt-apps/prebuilt-apps.mk)
+
+# OneplusParts
+$(call inherit-product, packages/apps/OneplusParts/parts.mk)
 
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 
-# OPlusExtras
+# Alert slider
 PRODUCT_PACKAGES += \
-    OPlusExtras \
-    tri-state-key-calibrate
-
-# Viper4Android
-$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
+    alert-slider_daemon
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
@@ -62,6 +61,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration.xml \
     device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration_7_0.xml
+
+# Carrier Config Overlays
+PRODUCT_PACKAGES += \
+    CarrierConfigOverlay
 
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \
@@ -104,7 +107,8 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     init.mt6893.rc \
-    init.oplus_extras.rc
+    init.oneplusparts.rc \
+    init.oneplusparts.sh
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -130,26 +134,19 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.denniz \
     android.hardware.sensors@2.0-service-multihal.denniz
 
-# Evolution Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(DEVICE_PATH)/overlay-evolution
-
 # Overlays
-PRODUCT_PACKAGES += \
-    CarrierConfigOverlay \
-    FrameworksResOverlay \
-    mtk-ims \
-    mtk-ims-telephony \
-    SettingsResOverlay \
-    SettingsProviderOverlay \
-    SystemUIResOverlay \
-    TelephonyProviderOverlay \
-    TetheringOverlay \
-    WifiOverlay
+DEVICE_PACKAGE_OVERLAYS += \
+    $(DEVICE_PATH)/overlay \
+    $(DEVICE_PATH)/overlay-arrow
 
-# Vendor overlay
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/vendor_overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/)
+# RRO Overlays
+PRODUCT_PACKAGES += \
+    FrameworksResOverlay
+
+# MTK IMS Overlays
+PRODUCT_PACKAGES += \
+    mtk-ims \
+    mtk-ims-telephony
 
 # MTK InCallService
 PRODUCT_PACKAGES += \
@@ -158,6 +155,10 @@ PRODUCT_PACKAGES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml
+
+# Call recording
+PRODUCT_PACKAGES += \
+    com.google.android.apps.dialer.call_recording_audio.features.xml
 
 # Perf
 PRODUCT_COPY_FILES += \
@@ -194,10 +195,24 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.denniz
 
+# Vendor overlay
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/vendor_overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/)
+
 # Udfps
 PRODUCT_PACKAGES += \
     UdfpsResources
 
-# GCamGo
+# Wi-Fi
 PRODUCT_PACKAGES += \
-    GCamGOPrebuilt-V4
+    TetheringConfigOverlay \
+    WifiOverlay
+
+# Photos
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/nexus.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/nexus.xml
+
+# For debugging
+ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
+PRODUCT_PACKAGES += MatLog
+endif
