@@ -95,9 +95,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fastbootd
 
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/rootdir/etc/fstab.mt6893:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6893
-
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.3-service.denniz \
@@ -119,12 +116,6 @@ PRODUCT_PACKAGES += \
 # ImsInit hack
 PRODUCT_PACKAGES += \
     ImsInit
-
-# Init
-PRODUCT_PACKAGES += \
-    init.mt6893.rc \
-    init.oneplusparts.rc \
-    init.oneplusparts.sh
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -170,23 +161,27 @@ PRODUCT_PACKAGES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml
+    $(DEVICE_PATH)/configs/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml
 
 # Perf
 PRODUCT_COPY_FILES += \
     system/core/libprocessgroup/profiles/task_profiles_30.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/etc/task_profiles.json \
     system/core/libprocessgroup/profiles/cgroups_30.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/etc/cgroups.json
 
-# Recovery
-PRODUCT_PACKAGES += \
-    init.recovery.mt6893.rc \
-    init.recovery.mt6893.sh
-
 # RcsService
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
     RcsService \
     PresencePolling
+
+# Rootdir
+PRODUCT_PACKAGES += \
+    fstab.mt6893 \
+    init.mt6893.rc \
+    init.oneplusparts.rc \
+    init.recovery.mt6893.rc \
+    init.recovery.mt6893.sh \
+    init.oneplusparts.sh
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
@@ -206,10 +201,6 @@ PRODUCT_PACKAGES += \
 # Touch
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.denniz
-
-# Vendor overlay
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/vendor_overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/)
 
 # Udfps
 PRODUCT_PACKAGES += \
