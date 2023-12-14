@@ -77,11 +77,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration.xml \
     device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration_7_0.xml
-
-# Carrier Config Overlays
-PRODUCT_PACKAGES += \
-    CarrierConfigOverlay
-
+   
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     Settings \
@@ -144,12 +140,12 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # RRO Overlays
 PRODUCT_PACKAGES += \
-    FrameworksResOverlay
-
-# MTK IMS Overlays
-PRODUCT_PACKAGES += \
+    FrameworksResOverlay \
+    CarrierConfigOverlay \
     mtk-ims \
-    mtk-ims-telephony
+    mtk-ims-telephony \
+    TetheringConfigOverlay \
+    WifiOverlay
 
 # MTK InCallService
 PRODUCT_PACKAGES += \
@@ -202,11 +198,6 @@ PRODUCT_PACKAGES += \
 # Udfps
 PRODUCT_PACKAGES += \
     UdfpsResources
-
-# Wi-Fi
-PRODUCT_PACKAGES += \
-    TetheringConfigOverlay \
-    WifiOverlay
 
 # Photos
 PRODUCT_COPY_FILES += \
