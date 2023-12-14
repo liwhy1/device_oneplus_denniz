@@ -39,7 +39,10 @@ $(call inherit-product-if-exists, packages/apps/prebuilt-apps/prebuilt-apps.mk)
 $(call inherit-product, packages/apps/OneplusParts/parts.mk)
 
 # Viper4Android
-$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/prebuilt/viper/lib/soundfx/libv4a_re.so:$(TARGET_COPY_OUT_VENDOR)/lib/soundfx/libv4a_re.so \
+    $(DEVICE_PATH)/prebuilt/viper/lib64/soundfx/libv4a_re.so:$(TARGET_COPY_OUT_VENDOR)/lib/soundfx/libv4a_re.so \
+    $(DEVICE_PATH)/prebuilt/viper/etc/audio_effects.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/audio_effects.conf
 
 # Basic Call Recorder
 $(call inherit-product-if-exists, vendor/bcr/bcr.mk)
@@ -58,6 +61,10 @@ PRODUCT_PACKAGES += \
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
+
+# Audio
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/denniz/bluetooth/include
@@ -89,7 +96,7 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/vendor_overlay/etc/fstab.mt6893:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6893
+    $(DEVICE_PATH)/rootdir/etc/fstab.mt6893:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6893
 
 # Fingerprint
 PRODUCT_PACKAGES += \
