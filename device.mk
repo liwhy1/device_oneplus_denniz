@@ -41,6 +41,9 @@ $(call inherit-product, packages/apps/OneplusParts/parts.mk)
 # Viper4Android
 $(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
 
+# Basic Call Recorder
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
+
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
@@ -158,10 +161,6 @@ PRODUCT_PACKAGES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml
-
-# Call recording
-PRODUCT_PACKAGES += \
-    com.google.android.apps.dialer.call_recording_audio.features.xml
 
 # Perf
 PRODUCT_COPY_FILES += \
