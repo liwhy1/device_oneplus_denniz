@@ -87,10 +87,6 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
     Settings \
     SystemUI
 
-# DT2W
-PRODUCT_PACKAGES += \
-    DT2W-Service-denniz
-
 # fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
@@ -167,6 +163,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     system/core/libprocessgroup/profiles/task_profiles_30.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/etc/task_profiles.json \
     system/core/libprocessgroup/profiles/cgroups_30.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/etc/cgroups.json
+    $(DEVICE_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # RcsService
 PRODUCT_PACKAGES += \
