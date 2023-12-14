@@ -43,7 +43,8 @@ LOCAL_OVERRIDES_PACKAGES := \
           VzwOmaTrigger \
           WallpapersBReel2020 \
           YouTube \
-          YouTubeMusicPrebuilt 
+          YouTubeMusicPrebuilt \
+          MusicFX
 
 LOCAL_UNINSTALLABLE_MODULE := true
 LOCAL_CERTIFICATE := platform

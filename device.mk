@@ -38,6 +38,9 @@ $(call inherit-product-if-exists, packages/apps/prebuilt-apps/prebuilt-apps.mk)
 # OneplusParts
 $(call inherit-product, packages/apps/OneplusParts/parts.mk)
 
+# Viper4Android
+$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
+
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
