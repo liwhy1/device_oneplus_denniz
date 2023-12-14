@@ -44,6 +44,9 @@ $(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
 # Basic Call Recorder
 $(call inherit-product-if-exists, vendor/bcr/bcr.mk)
 
+# Pocket Mode
+$(call inherit-product-if-exists, packages/apps/PocketMode/pocket_mode.mk)
+
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
