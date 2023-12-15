@@ -7,11 +7,5 @@
 
     <!-- Whether device supports Alert Slider -->
     <bool name="config_deviceSupportsAlertSlider">true</bool>
-    
-    <!-- Whether device supports High Brightness Mode -->
-    <bool name="config_deviceSupportsHBM">true</bool>
-    
-    <!-- Whether device supports Changing Maximum Brightness -->
-    <bool name="config_deviceSupportsChangingMaxBrightness">true</bool>
 
 </resources>
