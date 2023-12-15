@@ -33,6 +33,9 @@ fi
 PROTON=prebuilts/clang/host/linux-x86/proton
 if ! [ -d "$PROTON" ]; then git clone --depth=1 https://github.com/kdrag0n/proton-clang.git prebuilts/clang/host/linux-x86/proton
 fi
+EXTRAS=packages/apps/OPlusExtras
+if ! [ -d "$EXTRAS" ]; then git clone --depth=1 https://github.com/nattolecats/packages_apps_OPlusExtras.git packages/apps/OPlusExtras
+fi
 
 # Apply denniz patches
 bash device/oneplus/denniz/patches/patch.sh

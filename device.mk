@@ -38,6 +38,11 @@ $(call inherit-product-if-exists, packages/apps/prebuilt-apps/prebuilt-apps.mk)
 # OneplusParts
 $(call inherit-product, packages/apps/OneplusParts/parts.mk)
 
+# OPlusExtras
+PRODUCT_PACKAGES += \   
+    OPlusExtras \
+    tri-state-key-calibrate
+
 # Viper4Android
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/prebuilt/viper/lib/soundfx/libv4a_re.so:$(TARGET_COPY_OUT_VENDOR)/lib/soundfx/libv4a_re.so \
@@ -54,10 +59,6 @@ $(call inherit-product-if-exists, packages/apps/PocketMode/pocket_mode.mk)
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
-
-# Alert slider
-PRODUCT_PACKAGES += \
-    alert-slider_daemon
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
