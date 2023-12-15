@@ -53,9 +53,6 @@ PRODUCT_COPY_FILES += \
 # Basic Call Recorder
 $(call inherit-product-if-exists, vendor/bcr/bcr.mk)
 
-# Pocket Mode
-$(call inherit-product-if-exists, packages/apps/PocketMode/pocket_mode.mk)
-
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
@@ -198,6 +195,10 @@ PRODUCT_PACKAGES += \
 # Touch
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.denniz
+
+# DT2W
+PRODUCT_PACKAGES += \
+    DT2W-Service-denniz
 
 # Udfps
 PRODUCT_PACKAGES += \
