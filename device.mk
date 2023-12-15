@@ -109,6 +109,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ImsInit
 
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/rootdir/etc/fstab.mt6893:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6893
+
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
@@ -159,8 +162,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     system/core/libprocessgroup/profiles/task_profiles_30.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/etc/task_profiles.json \
     system/core/libprocessgroup/profiles/cgroups_30.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/etc/cgroups.json
-    $(DEVICE_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
-
+	
 # RcsService
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
