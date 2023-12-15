@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-/**
- * Copyright (c) 2009, The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+/*
+** Copyright 2009, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
 -->
 
 <!-- These resources are around just to allow their values to be customized
-     for different hardware and product builds.  Do not translate. -->
+     for different hardware and product builds.  Do not translate.
 
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+     NOTE: The naming convention is "config_camelCaseValue". Some legacy
+     entries do not follow the convention, but all new entries should. -->
 
     <!-- If true, the screen can be rotated via the accelerometer in all 4
          rotations as the default behavior. -->
@@ -29,29 +30,9 @@
     <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">true</bool>
-
-    <!-- Boolean indicating if current platform supports HFP inband ringing -->
-    <bool name="config_bluetooth_hfp_inband_ringing_support">true</bool>
-
-    <!-- Boolean indicating if current platform supports BLE peripheral mode -->
-    <bool name="config_bluetooth_le_peripheral_mode_supported">false</bool>
-
-    <!-- Whether device has screen with higher aspect ratio -->
-    <bool name="config_haveHigherAspectRatioScreen">true</bool>
 	 
     <!-- Flag specifying whether VoLTE is available on device -->
     <bool name="config_device_volte_available">true</bool>
-
-    <!-- Flag specifying whether VoLTE TTY is supported -->
-    <bool name="config_carrier_volte_tty_supported">true</bool>
-
-    <!-- Flag specifying whether VT is available on device -->
-    <bool name="config_device_vt_available">false</bool>
-
-    <!-- Flag specifying whether the device will use the "allow_hold_in_ims_call" carrier config
-         option.  When false, the device will support holding of IMS calls, regardless of the
-         carrier config setting. -->
-    <bool name="config_device_respects_hold_carrier_config">true</bool>
 
 	<!-- Flag specifying whether VoLTE should be available for carrier: independent of
          carrier provisioning. If false: hard disabled. If true: then depends on carrier
@@ -70,16 +51,10 @@
          Note that doze dreams are not subject to the same start conditions as ordinary dreams.
          Doze dreams will run whenever the power manager is in a dozing state. -->
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
-	
-    <!-- Whether the display blanks itself when transition from a doze to a non-doze state -->
-    <bool name="config_displayBlanksAfterDoze">false</bool>
 
     <!-- If true, the doze component is not started until after the screen has been turned off
          and the screen off animation has been performed. -->
     <bool name="config_dozeAfterScreenOffByDefault">true</bool>
-
-    <!-- Flag specifying whether or not IMS will use the ImsResolver dynamically -->
-     <bool name="config_eap_sim_based_auth_supported">true</bool>
 
     <!--  Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
@@ -139,12 +114,6 @@
          during initialization when the setting is still null. -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
 
-    <!-- If AOD can show an ambient version of the wallpaper -->
-    <bool name="config_dozeSupportsAodWallpaper">true</bool>
-
-    <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently in hardware. -->
-    <bool name="config_setColorTransformAccelerated">false</bool>
-
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
     <bool name="config_showNavigationBar">true</bool>
@@ -193,18 +162,6 @@
          Refer to power.h for details.
     -->
      <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
-
-    <!-- Set to true if the wifi display supports compositing content stored
-         in gralloc protected buffers.  For this to be true, there must exist
-         a protected hardware path for surface flinger to composite and send
-         protected buffers to the wifi display video encoder.
-         If this flag is false, we advise applications not to use protected
-         buffers (if possible) when presenting content to a wifi display because
-         the content may be blanked.
-         This flag controls whether the {@link Display#FLAG_SUPPORTS_PROTECTED_BUFFERS}
-         flag is set for wifi displays.
-    -->
-    <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
 	 
     <!-- The bounding path of the cutout region of the main built-in display.
          Must either be empty if there is no cutout region, or a string that is parsable by
@@ -245,7 +202,7 @@
 
     <!-- Minimum screen brightness setting allowed by power manager.
          The user is forbidden from setting the brightness below this level. -->
-    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.0</item>
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.1</item>
 
     <!-- Maximum screen brightness allowed by the power manager.
          The user is forbidden from setting the brightness above this level -->
@@ -256,7 +213,7 @@
     <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.4</item>
 
     <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
-    <bool name="config_allowAutoBrightnessWhileDozing">false</bool>
+    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
 
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
          May be less than the minimum allowed brightness setting
@@ -278,17 +235,6 @@
 
     <!-- Light sensor event rate in milliseconds for automatic brightness control. -->
     <integer name="config_autoBrightnessLightSensorRate">250</integer>
-
-    <!-- When the screen is turned on, the previous estimate of the ambient light level at the time
-         the screen was turned off is restored and is used to determine the initial screen
-         brightness.
-         If this flag is true, then the ambient light level estimate will be promptly recomputed
-         after the warm-up interface and the screen brightness will be adjusted immediately.
-         If this flag is false, then the ambient light level estimate will be adjusted more
-         gradually in the same manner that normally happens when the screen is on according to the
-         brightening or dimming debounce thresholds.  As a result, it may take somewhat longer to
-         adapt to the environment.  This mode may be better suited for watches. -->
-    <bool name="config_autoBrightnessResetAmbientLuxAfterWarmUp">true</bool>
 
     <!-- Array of light sensor lux values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 control points as follows:
@@ -351,29 +297,6 @@
         <item>255</item>
     </integer-array>
 
-    <!-- Array of lux values to define the minimum brightness curve, which guarantees that any
-         brightness curve that dips below it is rejected by the system.
-         This prevents auto-brightness from setting the screen so dark as to prevent the user from
-         resetting or disabling it.
-         The values must be non-negative and strictly increasing, and correspond to the values in
-         the config_minimumBrightnessCurveNits array. -->
-    <array name="config_minimumBrightnessCurveLux">
-        <item>0.0</item>
-        <item>2000.0</item>
-        <item>4000.0</item>
-    </array>
-    <!-- Array of nits values to define the minimum brightness curve, which guarantees that any
-         brightness curve that dips below it is rejected by the system.
-         This should map lux to the absolute minimum nits that are still readable in that ambient
-         brightness.
-         The values must be non-negative and non-decreasing, and correspond to the values in the
-         config_minimumBrightnessCurveLux array. -->
-    <array name="config_minimumBrightnessCurveNits">
-        <item>0.0</item>
-        <item>50.0</item>
-        <item>90.0</item>
-    </array>
-
     <!-- The nominal white coordinates, in CIE1931 XYZ color space, for Display White Balance to
          use in its calculations. AWB will adapt this white point to the target ambient white
          point. The array must include a total of 3 float values (X, Y, Z) -->
@@ -414,15 +337,6 @@
         <item>0</item>
         <item>40</item>
     </integer-array>
-
-    <!-- Set this to true to enable the platform's auto-power-save modes like doze and
-         app standby.  These are not enabled by default because they require a standard
-         cloud-to-device messaging service for apps to interact correctly with the modes
-         (such as to be able to deliver an instant message to the device even when it is
-         dozing).  This should be enabled if you have such services and expect apps to
-         correctly use them when installed on your device.  Otherwise, keep this disabled
-         so that applications can still use their own mechanisms. -->
-    <bool name="config_enableAutoPowerModes">true</bool>
 
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
@@ -499,9 +413,6 @@
         <item>96</item>
      </integer-array>
 
-     <!-- How long it takes for the HW to start illuminating after the illumination is requested. -->
-    <integer name="config_udfps_illumination_transition_ms">0</integer>
-
     <!-- The default peak refresh rate for a given device. -->
     <integer name="config_defaultPeakRefreshRate">90</integer>
 
@@ -526,26 +437,11 @@
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
 
-    <!-- Whether to cleanup fingerprints upon connection to the daemon and when user switches -->
-    <bool name="config_cleanupUnusedFingerprints">false</bool>
-
     <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
     <bool name="config_zramWriteback">true</bool>
 
     <!-- If true, the display will be shifted around in ambient mode. -->
     <bool name="config_enableBurnInProtection">true</bool>
-
-    <!-- Whether to cancel fingerprint operation if not idle -->
-    <bool name="config_fpCancelIfNotIdle">true</bool>
-
-    <!-- Whether or not the device is capable of multiple levels of vibration intensity.
-         Note that this is different from whether it can control the vibration amplitude as some
-         devices will be able to vary their amplitude but do not possess enough dynamic range to
-         have distinct intensity levels -->
-    <bool name="config_vibration_supports_multiple_intensities">true</bool>
-
-    <!-- Whether Hearing Aid profile is supported -->
-    <bool name="config_hearing_aid_profile_supported">true</bool>
 
     <!-- The default journal mode to use use when Write-Ahead Logging is not active.
          Choices are: OFF, DELETE, TRUNCATE, PERSIST and MEMORY.
@@ -574,11 +470,6 @@
          running in WAL mode.
          Choices are: FULL, NORMAL, OFF. -->
     <string name="db_wal_sync_mode" translatable="false">OFF</string>
-
-   <!-- Flag specifying whether WFC over IMS should be available for carrier: independent of
-         carrier provisioning. If false: hard disabled. If true: then depends on carrier
-         provisioning, availability etc -->
-     <bool name="config_carrier_wfc_ims_available">false</bool>
 
     <!-- List supported color modes. -->
     <integer-array name="config_availableColorModes">
@@ -641,23 +532,9 @@
     <!-- True if Unprocessed audio source supports the required frequency range and level -->
     <bool name="config_supportAudioSourceUnprocessed">true</bool>
 
-    <!-- Determines whether the shell features all run on another thread. -->
-    <bool name="config_enableShellMainThread">true</bool>
-
-	<!-- The location of the devices physical tri state switch
-         0: Left side
-         1: Right side -->
-    <integer name="config_alertSliderLocation">1</integer>
-
-    <!-- Whether device has physical tri state switch -->
-    <bool name="config_hasAlertSlider">true</bool>
-
     <!-- Whether the device enable the non-standalone (NSA) mode of 5G NR.-->
     <bool name="config_telephony5gNonStandalone">true</bool>
-    
-    <!-- Allow devices override audio panel location to the left side -->
-    <bool name="config_audioPanelOnLeftSide">true</bool>
-    
+   
     <!-- The type of the light sensor to be used by the display framework for things like
     auto-brightness. If unset, then it just gets the default sensor of type TYPE_LIGHT. -->
     <string name="config_displayLightSensorType" translatable="false">android.sensor.wise_light</string>

@@ -29,7 +29,7 @@
     <!-- Use framework FOD dimming instead of kernel dimming -->
     <bool name="config_udfpsFrameworkDimming">true</bool>
 
-    <!-- Array of brightness-alpha lut for framework dimming -->
+        <!-- Array of brightness-alpha lut for framework dimming -->
     <string-array name="config_udfpsDimmingBrightnessAlphaArray" translatable="false">
         <item>0,255</item>
         <item>190,238</item>
@@ -44,16 +44,16 @@
         <item>810,171</item>
         <item>880,165</item>
         <item>950,160</item>
-        <item>1047,152</item>
+        <item>1024,152</item>
     </string-array>
-
-    <!-- The scale factor for framework dimming -->
-    <integer name="config_udfpsDimmingBrightnessMin">389</integer>
-    <integer name="config_udfpsDimmingBrightnessMax">1047</integer>
-
+    
+        <!-- The scale factor for framework dimming -->
+    <integer name="config_udfpsDimmingBrightnessMin">649</integer>
+    <integer name="config_udfpsDimmingBrightnessMax">1024</integer>
+    
     <!-- The amount of delay to add when disabling the dimming.
          This is used to prevent flickers due to the dimming being disabled
          before the screen has had chance to switch out of HBM mode -->
-    <integer name="config_udfpsDimmingDisableDelay">20</integer>
+    <integer name="config_udfpsDimmingDisableDelay">14</integer>
 
 </resources>
