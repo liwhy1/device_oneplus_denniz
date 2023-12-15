@@ -12,9 +12,6 @@ if ! history | tail -n 1 | grep -q "denniz"; then return; fi
 cd "$ANDROID_BUILD_TOP"
 
 # Clone dependencies
-POCKET=packages/apps/PocketMode
-if ! [ -d "$POCKET" ]; then git clone --depth=1 https://github.com/nishant6342/packages_apps_PocketMode.git packages/apps/PocketMode
-fi
 PARTS=packages/apps/OneplusParts
 if ! [ -d "$PARTS" ]; then git clone --depth=1 https://github.com/2by2-Project-Devices/packages_apps_OneplusParts.git packages/apps/OneplusParts
 fi
