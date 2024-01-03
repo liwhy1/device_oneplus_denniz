@@ -36,7 +36,7 @@ $(call inherit-product, vendor/oneplus/IMS-denniz/mtk-ims.mk)
 $(call inherit-product-if-exists, packages/apps/prebuilt-apps/prebuilt-apps.mk)
 
 # OneplusParts
-$(call inherit-product, packages/apps/OneplusParts/parts.mk)
+$(call inherit-product-if-exists, packages/apps/OneplusParts/parts.mk)
 
 # OPlusExtras
 PRODUCT_PACKAGES += \
@@ -62,7 +62,7 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/denniz/bluetooth/include
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
 
 # Bluetooth Audio (System-side HAL, sysbta)
 PRODUCT_PACKAGES += \
@@ -70,8 +70,8 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-service-system
 
 PRODUCT_COPY_FILES += \
-    device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration.xml \
-    device/oneplus/denniz/bluetooth/audio/config/sysbta_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration_7_0.xml
+    $(DEVICE_PATH)/bluetooth/audio/config/sysbta_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration.xml \
+    $(DEVICE_PATH)/bluetooth/audio/config/sysbta_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration_7_0.xml
    
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \
@@ -138,11 +138,15 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # RRO Overlays
 PRODUCT_PACKAGES += \
-    FrameworksResOverlay \
     CarrierConfigOverlay \
+    FrameworksResOverlay \
     mtk-ims \
     mtk-ims-telephony \
-    TetheringConfigOverlay \
+    SettingsResOverlay \
+    SettingsProviderOverlay \
+    SystemUIResOverlay \
+    TelephonyProviderOverlay \
+    TetheringOverlay \
     WifiOverlay
 
 # MTK InCallService
@@ -202,7 +206,7 @@ PRODUCT_PACKAGES += \
 
 # Photos
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/nexus.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/nexus.xml
+    $(DEVICE_PATH)/configs/nexus.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/nexus.xml
 
 # GCamGo
 PRODUCT_PACKAGES += \

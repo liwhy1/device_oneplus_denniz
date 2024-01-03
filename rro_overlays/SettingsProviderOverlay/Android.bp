@@ -5,8 +5,6 @@
 //
 
 runtime_resource_overlay {
-    name: "FrameworksResOverlay",
-    sdk_version: "current",
-    resource_dirs: ["res"],
+    name: "SettingsProviderOverlay",
     product_specific: true,
 }
