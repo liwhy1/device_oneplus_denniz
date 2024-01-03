@@ -50,6 +50,9 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/prebuilt/viper/etc/audio_effects.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/audio_effects.conf
     $(call inherit-product, device/oneplus/denniz/prebuilt/viper/viper.mk)
 
+# Pocket Mode
+$(call inherit-product-if-exists, packages/apps/PocketMode/pocket_mode.mk)
+
 # Basic Call Recorder
 $(call inherit-product-if-exists, vendor/bcr/bcr.mk)
 
