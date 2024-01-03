@@ -43,13 +43,6 @@ PRODUCT_PACKAGES += \
     OPlusExtras \
     tri-state-key-calibrate
 
-# Viper4Android
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/prebuilt/viper/lib/soundfx/libv4a_re.so:$(TARGET_COPY_OUT_VENDOR)/lib/soundfx/libv4a_re.so \
-    $(DEVICE_PATH)/prebuilt/viper/lib64/soundfx/libv4a_re.so:$(TARGET_COPY_OUT_VENDOR)/lib/soundfx/libv4a_re.so \
-    $(DEVICE_PATH)/prebuilt/viper/etc/audio_effects.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/audio_effects.conf
-    $(call inherit-product, device/oneplus/denniz/prebuilt/viper/viper.mk)
-
 # Pocket Mode
 $(call inherit-product-if-exists, packages/apps/PocketMode/pocket_mode.mk)
 
