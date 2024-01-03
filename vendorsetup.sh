@@ -37,9 +37,6 @@ POCKET=packages/apps/PocketMode
 if ! [ -d "$POCKET" ]; then git clone --depth=1 https://github.com/nishant6342/packages_apps_PocketMode.git packages/apps/PocketMode
 fi
 
-# Apply denniz patches
-bash device/oneplus/denniz/patches/patch.sh
-
 # Return to saved directory
 cd $CUR_DIR ; unset CUR_DIR
 
