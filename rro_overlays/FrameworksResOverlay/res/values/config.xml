@@ -218,7 +218,7 @@
     <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.4</item>
 
     <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
-    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
+    <bool name="config_allowAutoBrightnessWhileDozing">false</bool>
 
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
          May be less than the minimum allowed brightness setting
@@ -519,7 +519,7 @@
     <bool name="config_cleanupUnusedFingerprints">false</bool>
     
     <!-- Whether to cancel fingerprint operation if not idle -->
-    <bool name="config_fpCancelIfNotIdle">false</bool>
+    <bool name="config_fpCancelIfNotIdle">true</bool>
     
     <string-array name="configs_base">
         <!-- ART heap compaction for cached apps -->

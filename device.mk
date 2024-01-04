@@ -33,7 +33,15 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 # Call proprietary blob setup
 $(call inherit-product, vendor/oneplus/denniz/denniz-vendor.mk)
 $(call inherit-product, vendor/oneplus/IMS-denniz/mtk-ims.mk)
+
+# Prebuilt-Apps
 $(call inherit-product-if-exists, packages/apps/prebuilt-apps/prebuilt-apps.mk)
+
+# Basic Call Recorder
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
+
+# Pocket Mode
+$(call inherit-product-if-exists, packages/apps/PocketMode/pocket_mode.mk)
 
 # OneplusParts
 $(call inherit-product-if-exists, packages/apps/OneplusParts/parts.mk)
@@ -43,11 +51,31 @@ PRODUCT_PACKAGES += \
     OPlusExtras \
     tri-state-key-calibrate
 
-# Pocket Mode
-$(call inherit-product-if-exists, packages/apps/PocketMode/pocket_mode.mk)
+# DT2W
+PRODUCT_PACKAGES += \
+    DT2W-Service-denniz
 
-# Basic Call Recorder
-$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
+# GCamGo
+PRODUCT_PACKAGES += \
+    GCamGOPrebuilt-V4
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(DEVICE_PATH)/overlay \
+    $(DEVICE_PATH)/overlay-evolution
+
+# RRO Overlays
+PRODUCT_PACKAGES += \
+    CarrierConfigOverlay \
+    FrameworksResOverlay \
+    mtk-ims \
+    mtk-ims-telephony \
+    SettingsResOverlay \
+    SettingsProviderOverlay \
+    SystemUIResOverlay \
+    TelephonyProviderOverlay \
+    TetheringOverlay \
+    WifiOverlay
 
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -72,7 +100,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/bluetooth/audio/config/sysbta_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration.xml \
     $(DEVICE_PATH)/bluetooth/audio/config/sysbta_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysbta_audio_policy_configuration_7_0.xml
-   
+
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     Settings \
@@ -85,7 +113,7 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.3-service.denniz \
-	vendor.oplus.hardware.biometrics.fingerprint@2.1
+    vendor.oplus.hardware.biometrics.fingerprint@2.1
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.fingerprint.xml
@@ -131,24 +159,6 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.denniz \
     android.hardware.sensors@2.0-service-multihal.denniz
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(DEVICE_PATH)/overlay \
-    $(DEVICE_PATH)/overlay-evolution
-
-# RRO Overlays
-PRODUCT_PACKAGES += \
-    CarrierConfigOverlay \
-    FrameworksResOverlay \
-    mtk-ims \
-    mtk-ims-telephony \
-    SettingsResOverlay \
-    SettingsProviderOverlay \
-    SystemUIResOverlay \
-    TelephonyProviderOverlay \
-    TetheringOverlay \
-    WifiOverlay
-
 # MTK InCallService
 PRODUCT_PACKAGES += \
     MtkInCallService
@@ -161,7 +171,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     system/core/libprocessgroup/profiles/task_profiles_30.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/etc/task_profiles.json \
     system/core/libprocessgroup/profiles/cgroups_30.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/etc/cgroups.json
-	
+
 # RcsService
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
@@ -196,21 +206,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.denniz
 
-# DT2W
-PRODUCT_PACKAGES += \
-    DT2W-Service-denniz
-
 # Udfps
 PRODUCT_PACKAGES += \
     UdfpsResources
-
-# Photos
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/nexus.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/nexus.xml
-
-# GCamGo
-PRODUCT_PACKAGES += \
-    GCamGOPrebuilt-V4
 
 # For debugging
 ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
