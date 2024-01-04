@@ -1,14 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-# Save current directory
-CUR_DIR=$(pwd)
-
-croot && export ANDROID_BUILD_TOP=$(pwd)
-
-# Guard
-if ! history | tail -n 1 | grep -q "denniz"; then return; fi
-
-# Go to root of source
+# Move to source root
 cd "$ANDROID_BUILD_TOP"
 
 # Clone dependencies
@@ -37,7 +29,5 @@ POCKET=packages/apps/PocketMode
 if ! [ -d "$POCKET" ]; then git clone --depth=1 https://github.com/nishant6342/packages_apps_PocketMode.git packages/apps/PocketMode
 fi
 
-# Return to saved directory
-cd $CUR_DIR ; unset CUR_DIR
-
-return
+# Move to source root
+cd "$ANDROID_BUILD_TOP"
