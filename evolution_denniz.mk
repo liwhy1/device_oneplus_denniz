@@ -24,11 +24,11 @@ $(call inherit-product, device/oneplus/denniz/device.mk)
 # Inherit some common Evolution X stuff.
 $(call inherit-product, vendor/evolution/config/common_full_phone.mk)
 
-# Evolution X Stuff
-EVO_BUILD_TYPE := UNOFFICIAL
-TARGET_BOOT_ANIMATION_RES := 1080
+# Evolution X flags
 TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_BOOT_ANIMATION_RES := 1080
 EXTRA_UDFPS_ANIMATIONS := true
+TARGET_ENABLE_BLUR := true
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := evolution_denniz
@@ -37,15 +37,8 @@ PRODUCT_BRAND := OnePlus
 PRODUCT_MODEL := DN2103
 PRODUCT_MANUFACTURER := OnePlus
 
-# Gapps
-TARGET_GAPPS_ARCH := arm64
-
-PRODUCT_GMS_CLIENTID_BASE := android-oneplus
-
 # Build info
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_DEVICE=OP515BL1 \
-    PRODUCT_NAME=DN2103 \
-    PRIVATE_BUILD_DESC="DN201IND-user 11 RP1A.200720.011 1627567766349 release-keys"
-
-BUILD_FINGERPRINT := OnePlus/DN2103/OP515BL1:11/RP1A.200720.011/1627567766349:user/release-keys
+BUILD_FINGERPRINT := "OnePlus/DN2103EEA/OP515BL1:13/TP1A.220905.001/R.108b2c1-1:user/release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES := PRIVATE_BUILD_DESC="sys_mssi_64_cn_armv82-user 13 TP1A.220905.001 1684289553451 release-keys"
+PRODUCT_PROPERTY_OVERRIDES := ro.build.fingerprint=$(BUILD_FINGERPRINT)
+PRODUCT_GMS_CLIENTID_BASE := android-oneplus

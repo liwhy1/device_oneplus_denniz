@@ -1,2 +1,0 @@
-set_prop(hal_fingerprint_oplus, default_prop)
-get_prop(hal_fingerprint_oplus, default_prop)
