@@ -25,8 +25,8 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-12288-dalvik-heap.mk
 PRODUCT_SHIPPING_API_LEVEL := 30
 
 # Call proprietary blob setup
-#$(call inherit-product, vendor/oneplus/denniz/denniz-vendor.mk)
-#$(call inherit-product, device/oplus/camera/camera.mk)
+$(call inherit-product, vendor/oneplus/denniz/denniz-vendor.mk)
+$(call inherit-product, device/oplus/camera/camera.mk)
 $(call inherit-product-if-exists, packages/apps/prebuilt-apps/prebuilt-apps.mk)
 $(call inherit-product-if-exists, packages/apps/RealmeParts/parts.mk)
 $(call inherit-product-if-exists, packages/apps/PocketMode/pocket_mode.mk)
@@ -303,7 +303,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/permissions/com.oplus.camera.unit.sdk_product.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/com.oplus.camera.unit.sdk_product.xml \
     $(DEVICE_PATH)/configs/permissions/oplus_camera_default_grant_permissions_list.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/oplus_camera_default_grant_permissions_list.xml \
-  $(DEVICE_PATH)/configs/permissions/APU_SYS.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/APU_SYS.xml \
+    $(DEVICE_PATH)/configs/permissions/APU_SYS.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/APU_SYS.xml \
     $(DEVICE_PATH)/configs/sysconfig/hiddenapi-package-whitelist-oplus-system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/hiddenapi-package-whitelist-oplus-system.xml
 
 # ORMS
@@ -483,7 +483,7 @@ PRODUCT_BOOT_JARS += \
     mediatek-telephony-base \
     mediatek-telephony-common \
     oplus-support-wrapper \
-    oplus-framework 
+    oplus-framework
 
 # Thermal
 PRODUCT_PACKAGES += \
