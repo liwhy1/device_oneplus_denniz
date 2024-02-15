@@ -6,13 +6,13 @@ cd "$ANDROID_BUILD_TOP"
 # Clone dependencies
 echo Cloning repositories
 VT=vendor/oneplus/denniz
-if ! [ -a $VT ]; then git clone https://github.com/nattolecats/proprietary_vendor_oneplus_denniz vendor/oneplus/denniz
+if ! [ -d $VT ]; then git clone https://github.com/nattolecats/proprietary_vendor_oneplus_denniz vendor/oneplus/denniz
 fi
 FW=vendor/oneplus/denniz-firmware
 if ! [ -d $FW ]; then git clone https://github.com/nattolecats/android_vendor_oneplus_denniz-firmware vendor/oneplus/denniz-firmware
 fi
 KERNEL=kernel/oneplus/denniz/Makefile
-if ! [ -a $KERNEL ]; then git clone --depth=1 https://github.com/nattolecats/android_kernel_oneplus_denniz -b udc kernel/oneplus/denniz
+if ! [ -d $KERNEL ]; then git clone --depth=1 https://github.com/nattolecats/android_kernel_oneplus_denniz -b udc kernel/oneplus/denniz
 PREBUILT_KERNEL=device/oneplus/denniz-kernel
 if ! [ -d $PREBUILT_KERNEL ]; then git clone https://github.com/nattolecats/android_device_oneplus_denniz-kernel device/oneplus/denniz-kernel
 fi

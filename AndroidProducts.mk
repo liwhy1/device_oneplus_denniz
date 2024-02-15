@@ -15,4 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/evolution_denniz.mk
+    $(LOCAL_DIR)/cherish_denniz.mk
+    
+COMMON_LUNCH_CHOICES := \
+    cherish_denniz-user \
+    cherish_denniz-userdebug \
+    cherish_denniz-eng

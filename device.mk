@@ -27,9 +27,7 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 # Call proprietary blob setup
 $(call inherit-product, vendor/oneplus/denniz/denniz-vendor.mk)
 $(call inherit-product, device/oplus/camera/camera.mk)
-$(call inherit-product-if-exists, packages/apps/prebuilt-apps/prebuilt-apps.mk)
 $(call inherit-product-if-exists, packages/apps/RealmeParts/parts.mk)
-$(call inherit-product-if-exists, packages/apps/PocketMode/pocket_mode.mk)
 
 # Vendor Log Tag
 include $(DEVICE_PATH)/configs/props/logtag.mk
@@ -503,12 +501,6 @@ PRODUCT_PACKAGES += \
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator-service.mediatek
-
-# Viper4Android
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/prebuilt/viper/lib/soundfx/libv4a_re.so:$(TARGET_COPY_OUT_VENDOR)/lib/soundfx/libv4a_re.so \
-    $(DEVICE_PATH)/prebuilt/viper/lib64/soundfx/libv4a_re.so:$(TARGET_COPY_OUT_VENDOR)/lib/soundfx/libv4a_re.so \
-    $(DEVICE_PATH)/prebuilt/viper/etc/audio_effects.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/audio_effects.conf
 
 # VNDK
 PRODUCT_COPY_FILES += \
