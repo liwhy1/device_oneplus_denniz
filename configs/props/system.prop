@@ -13,7 +13,7 @@ ro.camera.sound.forced=0
 Build.BRAND=MTK
 
 # Brightness
-persist.sys.brightness.low.gamma=true
+# persist.sys.brightness.low.gamma=true
 
 # Dalvik
 dalvik.vm.ps-min-first-save-ms=150000

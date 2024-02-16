@@ -30,9 +30,6 @@ TARGET_FACE_UNLOCK_SUPPORTED := true
 TARGET_INCLUDE_LIVE_WALLPAPERS := true
 TARGET_SUPPORTS_QUICK_TAP  := true
 EXTRA_UDFPS_ANIMATIONS := true
-
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.cherish.maintainer=Liwhy
 CHERISH_BUILD_TYPE := UNOFFICIAL
 
 # Device identifier. This must come after all inclusions.

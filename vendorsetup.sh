@@ -11,8 +11,9 @@ fi
 FW=vendor/oneplus/denniz-firmware
 if ! [ -d $FW ]; then git clone https://github.com/nattolecats/android_vendor_oneplus_denniz-firmware vendor/oneplus/denniz-firmware
 fi
-KERNEL=kernel/oneplus/denniz/Makefile
+KERNEL=kernel/oneplus/denniz
 if ! [ -d $KERNEL ]; then git clone --depth=1 https://github.com/nattolecats/android_kernel_oneplus_denniz -b udc kernel/oneplus/denniz
+fi
 PREBUILT_KERNEL=device/oneplus/denniz-kernel
 if ! [ -d $PREBUILT_KERNEL ]; then git clone https://github.com/nattolecats/android_device_oneplus_denniz-kernel device/oneplus/denniz-kernel
 fi
@@ -37,7 +38,7 @@ fi
 PARTS=packages/apps/RealmeParts
 if ! [ -d $PARTS ]; then git clone https://github.com/nishant6342/packages_apps_RealmeParts packages/apps/RealmeParts
 fi
-CAM=device/oplus/camera/camera.mk
-if ! [ -a $CAM ]; then git clone --depth=1 https://gitlab.com/nattolecats/device_oplus_camera device/oplus/camera
+CAM=device/oplus/camera
+if ! [ -d $CAM ]; then git clone --depth=1 https://gitlab.com/nattolecats/device_oplus_camera device/oplus/camera
 fi
 echo Done
