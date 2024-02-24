@@ -25,7 +25,7 @@ export VENDOR=oneplus
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-ANDROID_ROOT="${MY_DIR}/../../.."
+ANDROID_ROOT="${MY_DIR}"/../../..
 
 HELPER="${ANDROID_ROOT}/tools/extract-utils/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
@@ -66,6 +66,9 @@ function blob_fixup {
             ;;
         vendor/bin/hw/android.hardware.wifi@1.0-service-lazy)
             "${PATCHELF}" --replace-needed "libwifi-hal.so" "libwifi-hal-mtk.so" "${2}"
+            ;;
+        lib64/libem_support_jni.so)
+            "${PATCHELF}" --add-needed "libjni_shim.so" "${2}"
             ;;
         vendor/bin/mnld)
             ;&

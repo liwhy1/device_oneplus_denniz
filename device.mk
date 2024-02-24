@@ -19,12 +19,11 @@ DEVICE_PATH := device/oneplus/denniz
 # Installs gsi keys into ramdisk, to boot a GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
-# Dalvik
-$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
-
-# APEX
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+# Dalvik
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 PRODUCT_SHIPPING_API_LEVEL := 30
 
@@ -152,7 +151,7 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.4-service.clearkey \
+    android.hardware.drm-service.clearkey \
     android.hardware.drm@1.0.vendor \
     android.hardware.drm@1.1.vendor \
     android.hardware.drm@1.2.vendor \
@@ -161,6 +160,10 @@ PRODUCT_PACKAGES += \
     libmockdrmcryptoplugin \
     libdrm.vendor \
     libdrm
+
+# Protobuf
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -289,6 +292,7 @@ PRODUCT_PACKAGES += \
     FrameworkResOverlay \
     SystemUIOverlay \
     SettingsOverlay \
+    SettingsProviderOverlayDenniz \
     TelephonyOverlay \
     CarrierConfigOverlay \
     TetheringConfigOverlay \
@@ -489,10 +493,9 @@ PRODUCT_BOOT_JARS += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.mediatek
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
+    android.hardware.thermal@2.0-service.mtk \
+    android.hardware.thermal@2.0.vendor \
+    android.hardware.thermal@1.0-impl
 
 # Touch
 PRODUCT_PACKAGES += \
