@@ -23,14 +23,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Dalvik
-$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-12288-dalvik-heap.mk)
 
 PRODUCT_SHIPPING_API_LEVEL := 30
 
 # Call proprietary blob setup
 $(call inherit-product, vendor/oneplus/denniz/denniz-vendor.mk)
 $(call inherit-product, device/oplus/camera/camera.mk)
-$(call inherit-product-if-exists, packages/apps/RealmeParts/parts.mk)
+$(call inherit-product-if-exists, packages/apps/OneplusParts/parts.mk)
 
 # Vendor Log Tag
 include $(DEVICE_PATH)/configs/props/logtag.mk
@@ -193,6 +193,7 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
+    android.hidl.safe_union@1.0.vendor \
     libhidltransport \
     libhardware \
     libhwbinder \
