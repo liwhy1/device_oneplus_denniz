@@ -52,6 +52,9 @@ fi
 PARTS=packages/apps/OneplusParts
 if ! [ -d $PARTS ]; then git clone https://github.com/nattolecats/packages_apps_RealmeParts packages/apps/OneplusParts
 fi
+POCKET=packages/apps/PocketMode/pocket_mode.mk
+if ! [ -a $POCKET ]; then git clone https://github.com/nishant6342/packages_apps_PocketMode packages/apps/PocketMode
+fi
 CAM=device/oplus/camera
 if ! [ -d $CAM ]; then git clone --depth=1 https://gitlab.com/nattolecats/device_oplus_camera device/oplus/camera
 fi

@@ -31,6 +31,7 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 $(call inherit-product, vendor/oneplus/denniz/denniz-vendor.mk)
 $(call inherit-product, device/oplus/camera/camera.mk)
 $(call inherit-product-if-exists, packages/apps/OneplusParts/parts.mk)
+$(call inherit-product-if-exists, packages/apps/PocketMode/pocket_mode.mk)
 
 # Vendor Log Tag
 include $(DEVICE_PATH)/configs/props/logtag.mk
@@ -321,6 +322,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     OplusDoze
 
+# AODHelper
+PRODUCT_PACKAGES += \
+    AODHelper
+
 # MTK InCallService
 PRODUCT_PACKAGES += \
     MtkInCallService
@@ -508,7 +513,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.mediatek
+    android.hardware.vibrator-service.denniz
 
 # VNDK
 PRODUCT_COPY_FILES += \

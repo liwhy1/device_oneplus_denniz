@@ -38,7 +38,7 @@
     <bool name="config_allow_ussd_over_ims">true</bool>
 
     <!-- Flag specifying whether VT is available on device -->
-    <bool name="config_device_vt_available">true</bool>
+    <bool name="config_device_vt_available">false</bool>
 
     <!-- Flag specifying whether WFC over IMS is available on device -->
     <bool name="config_device_wfc_ims_available">true</bool>    
@@ -46,7 +46,7 @@
     <!-- Flag specifying whether WFC over IMS should be available for carrier: independent of
          carrier provisioning. If false: hard disabled. If true: then depends on carrier
          provisioning, availability etc -->
-    <bool name="config_carrier_wfc_ims_available">true</bool>
+    <bool name="config_carrier_wfc_ims_available">false</bool>
 
     <!-- Flag specifying whether VoLTE should be available for carrier: independent of
          carrier provisioning. If false: hard disabled. If true: then depends on carrier
@@ -224,12 +224,12 @@
          -2 is invalid so setting will resort to int value specified above.
          Set this to 0.0 to allow screen to go to minimal brightness.
          The user is forbidden from setting the brightness below this level. -->
-    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.001</item>
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.0015</item>
 
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
          May be less than the minimum allowed brightness setting
          that can be set by the user. -->
-    <integer name="config_screenBrightnessDoze">3</integer>
+    <integer name="config_screenBrightnessDoze">5</integer>
 
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
@@ -314,9 +314,9 @@
         <item>sensorLocationY</item>
         <item>sensorRadius</item>
       -->
-        <item>539</item>
-        <item>2175</item>
-        <item>96</item>
+        <item>540</item>
+        <item>2185</item>
+        <item>97</item>
      </integer-array>
 
      <!-- How long it takes for the HW to start illuminating after the illumination is requested. -->
